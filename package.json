@@ -1,5 +1,5 @@
 { 
-	"name" : "udp-multicast",
+	"name" : "multicast",
 	"description" : "Provide UDP-Multicast Sockets",
 	"homepage" : "http://sannis.github.com/node-mysql-libmysqlclient",
 	"version" : "0.0.1",
@@ -14,7 +14,7 @@
 	"repositories" : [ 
 		{ "type" : "git", "url" : "http://github.com/Sannis/node-mysql-libmysqlclient.git" }
   ],
-	"main" : "./mysql-libmysqlclient",
+	"main" : "./multicast.js",
 	"scripts" : {
 		"build" : "node-waf configure build",
 		"test" : "node-waf test",
