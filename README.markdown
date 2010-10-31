@@ -9,17 +9,17 @@ Multicast UDP Sockets for NodeJS
 
 Installation
 ------------
-$ cd ~/.node_libraries
-$	git clone http://github.com/phidelta/NodeJS-UDP-Multicast.git mdgram
-$ cd mdgram
-$ node-waf configure build
-$ ln -s ./build/default/bindings.node bindings.node
+	$ cd ~/.node_libraries
+	$	git clone http://github.com/phidelta/NodeJS-UDP-Multicast.git mdgram
+	$ cd mdgram
+	$ node-waf configure build
+	$ ln -s ./build/default/bindings.node bindings.node
 
 OR
 
-$ git clone http://github.com/phidelta/NodeJS-UDP-Multicast.git mdgram
-$ cd mdgram
-$ npm install
+	$ git clone http://github.com/phidelta/NodeJS-UDP-Multicast.git mdgram
+	$ cd mdgram
+	$ npm install
 
 Synopsis
 --------
