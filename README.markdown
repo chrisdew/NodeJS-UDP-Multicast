@@ -52,4 +52,4 @@ Philipp Dunkel (phidelta at phideltacity.net)
 License
 -------
 
-MIT license. See license text in file [LICENSE](http://github.com/phidelta/NodeJS-UDP-Multicast/LICENSE).
+MIT license. See license text in file [LICENSE](http://github.com/phidelta/NodeJS-UDP-Multicast/blob/master/LICENSE).
