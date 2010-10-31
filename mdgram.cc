@@ -56,7 +56,7 @@ namespace node_mdgram {
 		if (groupaddr.length() > 15) {
 	    return Exception::Error(String::New("Multicast Group too long"));
 	  }
-	  memcpy(group, *groupaddr, groupaddr.length());
+	  memcpy(group, *groupaddr, groupaddr.length()+1);
 
 		mreq.imr_multiaddr.s_addr=inet_addr(group);
 	  mreq.imr_interface.s_addr=htonl(INADDR_ANY);
@@ -90,7 +90,7 @@ namespace node_mdgram {
 		if (groupaddr.length() > 15) {
 	    return Exception::Error(String::New("Multicast Group too long"));
 	  }
-	  memcpy(group, *groupaddr, groupaddr.length());
+	  memcpy(group, *groupaddr, groupaddr.length()+1);
 
 		mreq.imr_multiaddr.s_addr=inet_addr(group);
 	  mreq.imr_interface.s_addr=htonl(INADDR_ANY);
