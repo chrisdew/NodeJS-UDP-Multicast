@@ -15,7 +15,7 @@ def configure(conf):
 def build(bld):
 	obj = bld.new_task_gen('cxx', 'shlib', 'node_addon')
 	obj.target = 'bindings'
-	obj.source = 'multicast.cc'
+	obj.source = 'mdgram.cc'
 
 def shutdown():
 	# HACK to get bindings.node out of build directory.

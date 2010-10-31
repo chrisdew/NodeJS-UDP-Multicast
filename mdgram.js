@@ -1,35 +1,38 @@
 var binding = require('./bindings');
 var dgram=require("dgram");
 
-var Socket={};
-Socket.joinGroup = function(group) {
-	if (!this.fd) throw new Error('Not running');
-	return binding.joinGroup(this.fd, group+"");
+var Socket=dgram.Socket;
+exports.Socket = Socket;
+exports.createSocket = function (type, listener) {
+	if (type != 'udp4') {
+		throw new TypeError("Invalid Multicast Socket-Type: "+type);
+	}
+  return new Socket(type, listener);
 };
-Socket.leaveGroup = function(group) {
+
+Socket.prototype.joinGroup = function(group) {
 	if (!this.fd) throw new Error('Not running');
-	return binding.leaveGroup(this.fd, group+"");
+	if(binding.joinGroup(this.fd, group+"")) return;
+	throw new Error("Could not joinGroup: "+group);
 };
-Socket.setMulticastTTL = function(arg) {
+Socket.prototype.leaveGroup = function(group) {
+	if (!this.fd) throw new Error('Not running');
+	if (binding.leaveGroup(this.fd, group+"")) return;
+	throw new Error("Could not leaveGroup: "+group);
+};
+Socket.prototype.setMulticastTTL = function(arg) {
   if (!this.fd) throw new Error('Not running');
 
 	var newttl = parseInt(arg,10);
   if (newttl > 0 && newttl < 256) {
-    return binding.setTTL(this.fd, newttl);
+    if(binding.setTTL(this.fd, newttl)) return;
+		throw new Error("Could not setMulticastTTL: "+group);
   } else {
     throw new Error("New MulticastTTL must be between 1 and 255");
   }
 };
-Socket.setMulticastInterface = function(arg) {
+Socket.prototype.setMulticastInterface = function(arg) {
   if (!this.fd) throw new Error('Not running');
-	return binding.setInterface(this.fd, arg+"");
-};
-
-exports.createSocket = function() {
-	var socket = dgram.createSocket("udp4");
-	socket.joinGroup = Socket.joinGroup;
-	socket.leaveGroup = Socket.leaveGroup;
-	socket.setMulticastTTL = Socket.setMulticastTTL;
-	socket.setMulticastInterface = Socket.setMulticastInterface;
-	return socket;
+	if (binding.setInterface(this.fd, arg+"")) return;
+	throw new Error("Could not setMulticastInterface: "+group);
 };

@@ -11,7 +11,7 @@ This is the same as for the standard [Datagram Sockets](http://www.nodejs.org/ap
 
 * joinGroup(<Multicast-IP as a String>)
 * leaveGroup(<Multicast-IP as a String>)
-* setMulticastTTL(<TTL as an Integer between 0 and 255 (inclusive)>)
+* setMulticastTTL(<TTL as an Integer between 1 and 255 (inclusive)>)
 * setMulticastInterface(<IP of a local non-looping interface as a String>)
 
 createSocket()
