@@ -23,7 +23,7 @@
 #include <fcntl.h>
 #include <netinet/tcp.h>
 
-namespace node_multicast {
+namespace node_mdgram {
 	using namespace v8;
 
 #define FD_ARG(a)                                        \
@@ -62,7 +62,7 @@ namespace node_multicast {
 	  mreq.imr_interface.s_addr=htonl(INADDR_ANY);
 
 		if (setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP, &mreq, sizeof(mreq)) < 0) {
-			return ThrowException(ErrnoException(errno, "socket"));
+			return ThrowException(Exception::Error(String::New(strerror(errno))));
 		}
 
 		return True();
@@ -96,7 +96,7 @@ namespace node_multicast {
 	  mreq.imr_interface.s_addr=htonl(INADDR_ANY);
 
 		if (setsockopt(fd, IPPROTO_IP, IP_DROP_MEMBERSHIP, &mreq, sizeof(mreq)) < 0) {
-			return ThrowException(ErrnoException(errno, "socket"));
+			return ThrowException(Exception::Error(String::New(strerror(errno))));
 		}
 
 		return True();
@@ -113,7 +113,7 @@ namespace node_multicast {
 
 		u_char ttl = args[1]->Int32Value();
 		if (setsockopt(fd, IPPROTO_IP, IP_MULTICAST_TTL, &ttl, sizeof(ttl)) < 0) {
-			return ThrowException(ErrnoException(errno, "socket"));
+			return ThrowException(Exception::Error(String::New(strerror(errno))));
 		}
 
 		return True();
@@ -138,7 +138,7 @@ namespace node_multicast {
 	  memcpy(ifnamestr, *ifname, ifname.length());
 		ifaddr = inet_addr(ifnamestr);
 		if (setsockopt(fd, IPPROTO_IP, IP_MULTICAST_IF, &ifaddr, sizeof(ifaddr)) < 0) {
-			return ThrowException(ErrnoException(errno, "socket"));
+			return ThrowException(Exception::Error(String::New(strerror(errno))));
 		}
 
 		return True();
