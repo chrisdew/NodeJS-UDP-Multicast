@@ -9,10 +9,10 @@ Socket
 
 This is the same as for the standard [Datagram Sockets](http://www.nodejs.org/api.html#dgram-267), except the prototype has been enriched by 4 methods:
 
-* joinGroup(<Multicast-IP as a String>)
-* leaveGroup(<Multicast-IP as a String>)
-* setMulticastTTL(<TTL as an Integer between 1 and 255 (inclusive)>)
-* setMulticastInterface(<IP of a local non-looping interface as a String>)
+* joinGroup(&lt;Multicast-IP as a String>)
+* leaveGroup(&lt;Multicast-IP as a String>)
+* setMulticastTTL(&lt;TTL as an Integer between 1 and 255 (inclusive)>)
+* setMulticastInterface(&lt;IP of a local non-looping interface as a String>)
 
 createSocket()
 --------------
