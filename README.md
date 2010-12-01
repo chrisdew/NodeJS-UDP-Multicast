@@ -21,6 +21,11 @@ OR
 	$ cd mdgram
 	$ npm install
 
+OR SIMPLY
+
+	$ npm install mdgram
+
+
 Synopsis
 --------
 
