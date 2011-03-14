@@ -45,6 +45,15 @@ Setting the Multicast Interface:
 	socket.setMulticastInterface("192.168.0.3"); // Where 192.168.0.3 is the IP of the interface you want to use Multicast on
 	socket.setMulticastInterface(); // If you want the system to figure out which to use (commonly the first non-loopback interface)
 
+
+Ubuntu/Debian specific notes on setMulticastInterface():
+
+Add something like the lines below to /etc/network/interfaces to control which interface is the default for multicast.  By default, multicast uses the default route, not the first non-loopback interface.
+
+    up route add -net 224.0.0.0 netmask 224.0.0.0 eth0
+    down route del -net 224.0.0.0 netmask 224.0.0.0 eth0
+
+
 Leaving a Multicast Group:
 
 	socket.leaveGroup("225.0.0.73");
